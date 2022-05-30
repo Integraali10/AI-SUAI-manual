@@ -1,29 +1,31 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{hyperref}
-\usepackage[draft]{graphicx}
 
-\graphicspath{{images/}{../images/}}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
 
 \usepackage{blindtext}
 
-\usepackage{subfiles} % Best loaded last in the preamble
 
-\title{Subfile Example}
-\author{Team Learn Overleaf}
-\date{ }
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+
+
+\title{Curriculum}
+\author{Arishychko}
+
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
-
-\subfile{sections/introduction}
+\section{First section}
+\import{sections/}{introduction}
 
 \section{Second section}
+\import{sections/}{section2}
 
-\subfile{sections/section2}
 
 \end{document}
