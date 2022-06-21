@@ -1,0 +1,190 @@
+\documentclass[fleqn, a4paper, 14pt]{extarticle}
+\usepackage{import}
+
+\usepackage{authblk}
+\usepackage{cmap}% поиск в PDF
+
+% Дополнительная работа с математикой
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
+\usepackage[unicode]{hyperref}
+
+\newcommand*{\email}[1]{%
+    \normalsize\href{mailto:#1}{#1}%\par
+    }
+
+\usepackage{listings} %листинг программы
+\usepackage{color}
+
+
+
+\usepackage{titlesec}    
+% \titleformat{\chapter}[block]
+% {\normalfont%
+%     \large% %change this size to your needs for the first line
+%     \bfseries}{\chaptertitlename\ \thechapter.}{8pt}{%
+%     \large %change this size to your needs for the second line
+%     }
+% \titlespacing{\chapter}{0pt}{0pt}{20pt}
+\titleformat{\section}[block]
+{\normalfont%
+    \normalsize% %change this size to your needs for the first line
+    \bfseries\filcenter}{\thesection}{8pt}{%
+    \normalsize%change this size to your needs for the second line
+    }
+\titleformat{\subsection}[block]
+{\normalfont%
+    \normalsize% %change this size to your needs for the first line
+    \bfseries\filcenter}{\thesubsection.}{8pt}{%
+    \normalsize%change this size to your needs for the second line
+    }
+\titleformat{\subsubsection}[block]
+{\normalfont%
+    \normalsize% %change this size to your needs for the first line
+    \bfseries\filcenter}{\thesubsubsection.}{8pt}{%
+    \normalsize%change this size to your needs for the second line
+    }
+% \titlespacing{\section}{0pt}{15pt}{15pt}
+% \titlespacing*{\chapter}{0pt}{3.50ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\section}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+% \makeatletter %%%%% <---- Starting chapter without a pagebreak
+% \renewcommand\chapter{\par%
+% \thispagestyle{plain}% \global\@topnum\z@
+% \@afterindentfalse \secdef\@chapter\@schapter}
+% \makeatother %%%%% <---- Starting chapter without a pagebreak
+
+% \usepackage[titles]{tocloft}
+% \renewcommand{\cftchapfont}{\bfseries}
+% \renewcommand{\cftchappagefont}{\bfseries}
+% \renewcommand{\cftchappresnum}{Глава }
+% \renewcommand{\cftchapaftersnum}{.}
+% \renewcommand{\cftchapnumwidth}{5em}
+
+\usepackage{tabu}
+\usepackage{setspace}
+
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=15mm,footskip=6mm]{geometry} % настройки полей документа
+
+\usepackage{indentfirst}
+\setlength{\parindent}{3em}
+%\setlength{\parskip}{1em}
+\usepackage{float}
+\usepackage[labelsep=endash, hypcap=true]{caption}
+\captionsetup[figure]{name=Рисунок}
+
+
+%%Работа с источниками
+\usepackage[square, numbers, sort]{natbib} 
+% \bibliographystyle{ieeetr}
+% Nice citations [1,2,3,4] -> [1-4]
+\usepackage{cite}
+\renewcommand{\bibsection}{\section*{Литература}}
+
+% [1] -> 1. in the bibliography
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+%%% Работа с картинками
+\usepackage{graphicx}
+\graphicspath{{images/}}% папки с картинками
+%\usepackage[export]{adjustbox}
+\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+\renewcommand{\thesubfigure}{\alph{subfigure}.}
+%\renewcommand*{\thesubfigure}{\thefigure.\arabic{subfigure}}
+%\usepackage{subcaption}
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+\usepackage[table,xcdraw,dvipsnames]{xcolor}
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+\usepackage[outdir=images/]{epstopdf}
+\usepackage{tikz}
+\usepackage{pgfplots} 
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false} 
+ 
+\usepackage{mathtext} % русские буквы в формулах
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+%% Свои команды
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+\newcommand{\mean}[1]{\left\langle#1\right\rangle}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\modul}[1]{\left\lvert#1\right\rvert}
+%\def\<#1>{$\langle$\textit{\ignorespaces#1\unskip}$\rangle$}
+\newcommand{\ppm}{${}\pm{}$}
+\newcommand{\expectation}[1]{\mathbb{E}\{{#1}\}}
+\newcommand{\expect}[2]{\mathbb{E}_{#1}\{{#2}\}}
+\newcommand{\inputx}{\hat{x}}
+\newcommand{\inputy}{\hat{y}}
+\DeclareMathOperator*{\argmin}{arg min}
+\newcommand{\diff}{\text{d}}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%\setcounter{page}{4} %полезная функция для сбора вкр не с первой страницы
+
+%\makeatletter
+%\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+%\begin{flushleft}
+%  \textbf{\@title}
+%  
+% 
+%  \@author
+%\end{flushleft}\egroup
+%}
+%\makeatother
+
+%\onehalfspacing
+%\title{SINGLE FRAME NOISE2NOISE: МЕТОД ОБУЧЕНИЯ НЕЙРОННЫХ СЕТЕЙ БЕЗ ИСПОЛЬЗОВАНИЯ ЭТАЛОННЫХ ДАННЫХ В ЗАДАЧЕ УЛУЧШЕНИЯ ИЗОБРАЖЕНИЯ ВИДЕОПОСЛЕДОВАТЕЛЬНОСТИ}
+%\author[*,**,1]{Бойко А.А.}
+%\author[*,**,2]{Малашин Р.О., канд. техн. наук.}
+%\affil[*]{Институт физиологии им. И.П. Павлова РАН, Санкт-Петербург, Россия}
+%\affil[**]{Национальный исследовательский университет информационных технологий, механики и оптики, Санкт-Петербург, Россия}
+%\affil[1]{\email{aa.sparagus.bo@yandex.ru}}
+%\affil[2]{\email{malashinroman@mail.ru}}
+%\date{}                     %% if you don't need date to appear
+% \setcounter{Maxaffil}{2}
+%\renewcommand\Authand{\\}
+%\renewcommand\Affilfont{\normalsize}
+%\onehalfspacing
+
+\title{Curriculum}
+\author{Arishychko}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Введение}
+\subfile{sections/introduction}
+
+\section{Second section}
+\subfile{sections/section2}
+
+
+\end{document}
